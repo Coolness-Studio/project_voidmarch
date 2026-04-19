@@ -1,31 +1,28 @@
-use core::panic;
-
 use macroquad::prelude::*;
 
 mod ui;
-use ui::{draw_menu};
+use ui::draw_menu;
 #[derive(Debug)]
-enum STATE {
-    MENU,
-    SETTINGS,
-    GAMEPLAY(i32),
+enum State {
+    Menu,
+    Settings,
+    Level(i32),
 }
 
 #[macroquad::main("Project: VoidMarch")]
 pub async fn main() {
-    let state: STATE = STATE::MENU;
+    let state: State = State::Menu;
 
     loop {
         clear_background(BLACK);
 
         match state {
-            STATE::MENU => draw_menu(),
+            State::Menu => draw_menu(),
             _ => {
-                panic!("not implemented {:?}", state)
+                unimplemented!("{:?} (game state)", state);
             }
         }
 
         next_frame().await
     }
 }
-
