@@ -6,7 +6,7 @@ use ui::draw_menu;
 enum State {
     Menu,
     Settings,
-    Level(i32),
+    Level(u8),
 }
 
 #[macroquad::main("Project: VoidMarch")]
@@ -18,9 +18,11 @@ pub async fn main() {
 
         match state {
             State::Menu => draw_menu(),
-            _ => {
-                unimplemented!("{:?} (game state)", state);
-            }
+            State::Settings => ,
+            State::Level(id) => {
+                // This should prob be a function instead
+                }
+            },
         }
 
         next_frame().await
