@@ -2,8 +2,11 @@ use macroquad::prelude::*;
 
 mod ui;
 use ui::{SettingsMenu, draw_menu};
+
 mod levels;
 use levels::draw_level;
+
+mod assets;
 
 #[derive(Debug)]
 enum State {
@@ -27,8 +30,4 @@ pub async fn main() {
 
         next_frame().await
     }
-}
-
-fn draw_settings(menu: &SettingsMenu) {
-    todo!("implement settings submenu {:?}", menu)
 }

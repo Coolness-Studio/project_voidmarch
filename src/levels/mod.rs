@@ -5,6 +5,7 @@
 // something like draw_tiles or similar could be used to make the draw_level function less
 // cluttered.
 mod read_level;
+use read_level::*;
 
 pub fn draw_level(id: u8) {
     match id {
@@ -12,4 +13,12 @@ pub fn draw_level(id: u8) {
         0 => todo!("tutorial logic"),
         i => todo!("level {} logic", i),
     }
+}
+
+struct Position {
+    x
+}
+struct Tile {
+    position: Position,
+    texture: 
 }
