@@ -1,11 +1,14 @@
 use macroquad::prelude::*;
 
 mod ui;
-use ui::draw_menu;
+use ui::{SettingsMenu, draw_menu};
+mod levels;
+use levels::draw_level;
+
 #[derive(Debug)]
 enum State {
     Menu,
-    Settings,
+    Settings(SettingsMenu),
     Level(u8),
 }
 
@@ -18,13 +21,14 @@ pub async fn main() {
 
         match state {
             State::Menu => draw_menu(),
-            State::Settings => ,
-            State::Level(id) => {
-                // This should prob be a function instead
-                }
-            },
+            State::Settings(menu) => draw_settings(&menu),
+            State::Level(id) => draw_level(id),
         }
 
         next_frame().await
     }
+}
+
+fn draw_settings(menu: &SettingsMenu) {
+    todo!("implement settings submenu {:?}", menu)
 }
