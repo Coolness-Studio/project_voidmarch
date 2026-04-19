@@ -15,6 +15,7 @@
         libxcursor
         libxi
         libxrandr
+        libxkbcommon
         libGL
       ];
     in {
@@ -28,9 +29,7 @@
           pkg-config
         ] ++ runtimeLibs;
 
-        shellHook = ''
-          export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath runtimeLibs}:$LD_LIBRARY_PATH"
-        '';
+        LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath runtimeLibs;
       };
     };
 }
