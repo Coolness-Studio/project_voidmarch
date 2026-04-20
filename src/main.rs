@@ -1,7 +1,7 @@
 use macroquad::prelude::*;
 
 mod ui;
-use ui::{SettingsMenu, draw_menu};
+use ui::{SettingsMenu, draw_menu, draw_settings};
 
 mod levels;
 use levels::draw_level;
