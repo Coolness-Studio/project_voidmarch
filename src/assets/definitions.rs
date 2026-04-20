@@ -11,7 +11,7 @@ impl Level {
     pub async fn load() -> Self {
         // EXAMPLE
             let base_tile = load_texture("assets/textures/tiles/base_tile.png").await.expect("Failed to load assets/textures/tiles/base_tile.png");
-            fighter.set_filter(FilterMode::Nearest); 
+            base_tile.set_filter(FilterMode::Nearest); 
 
             Self {
                 base_tile,
