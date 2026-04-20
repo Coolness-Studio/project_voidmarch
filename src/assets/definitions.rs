@@ -1,9 +1,9 @@
 /// This file has the definitions for the structs containing the textures
-// NOTE: Dragondude! Do you think we should have seperate files for each of the structs or is this fine?
 use macroquad::prelude::*;
 
 pub struct Level {
     pub base_tile: Texture2D, // We'll add in more easily as we go
+    pub grass: Texture2D,
 }
 impl Level {
     pub async fn load() -> Self {
@@ -13,7 +13,15 @@ impl Level {
             .expect("Failed to load assets/textures/tiles/base_tile.png");
         base_tile.set_filter(FilterMode::Nearest);
 
-        Self { base_tile }
+        let grass = load_texture("assets/textures/tiles/grass.png")
+            .await
+            .expect("Failed to load assets/textures/tiles/grass.png");
+        grass.set_filter(FilterMode::Nearest);
+
+        Self { 
+            base_tile, 
+            grass,
+        }
     }
 }
 

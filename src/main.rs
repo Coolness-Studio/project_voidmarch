@@ -18,17 +18,17 @@ enum State {
 
 #[macroquad::main("Project: VoidMarch")]
 pub async fn main() {
-    let state: State = State::Menu;
+    let mut state: State = State::Menu;
 
     let assets = Assets::load().await;
 
     loop {
         clear_background(BLACK);
 
-        match state {
-            State::Menu => draw_menu(),
+        match &mut state {
+            State::Menu => draw_menu(&mut state),
             State::Settings(menu) => draw_settings(&menu),
-            State::Level(id) => draw_level(id, &assets),
+            State::Level(id) => draw_level(*id, &assets),
         }
 
         next_frame().await

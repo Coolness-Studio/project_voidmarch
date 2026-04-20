@@ -15,9 +15,14 @@ pub fn draw_level(id: u8, assets: &Assets) {
             for y in 0..level.height {
                 for x in 0..level.width {
                     let tile = level.tile(LayerKind::Ground, x, y).unwrap();
+
+                    // Not sure if this should be in assets now that I think about it
+                    let x_position = (x * TILE_SIZE as u16) as f32;
+                    let y_position = (y * TILE_SIZE as u16) as f32;
+
                     match tile {
-                        0u16 => draw_texture(&assets.level.base_tile, 16.0, 16.0, WHITE),
-                        1u16 => draw_texture(&assets.level.base_tile, 16.0, 16.0, WHITE),
+                        0u16 => draw_texture(&assets.level.base_tile, x_position, y_position, WHITE),
+                        1u16 => draw_texture(&assets.level.grass, x_position, y_position, WHITE),
                         _ => panic!("Tile type not known!"),
                     }
                 }
